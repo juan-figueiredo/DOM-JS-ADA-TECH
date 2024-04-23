@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+    <style>
+        .error{
+            color: red;
+            padding: 20px;
+            border: 3px solid blue;
+        }
+        
+        .input{
+            color: rgb(238, 255, 0);
+            padding: 10px;
+            border: 3px solid rgb(255, 238, 0);
+        }
+        .inputError{
+            color: rgb(255, 0, 0);
+            padding: 10px;
+            border: 3px solid rgb(255, 0, 0);
+        }
+        .inputSucess{
+            color: rgb(0, 255, 0);
+            padding: 10px;
+            border: 3px solid rgb(0, 255, 42);
+        }
+    </style>
+</head>
+<body>
+    <h1>Teste</h1>
+
+    <form onsubmit="return validarForm()">
+
+        <div id="form-name">
+            <label for=""></label>
+            <input id="nome" type="text">
+            <span></span>
+        </div>
+
+        <button type="submit">Enviar</button>
+    </form>
+</body>
+<script>
+    function validarForm(){
+
+        const inputName = document.getElementById('nome');
+        const formName = document.getElementById('form-name');
+        
+        const span = formName.getElementsByTagName('span');
+
+        if(inputName.value.length > 3 ){
+            inputName.classList.add('inputSucess')
+            span[0].remove();
+            return false;
+            inputName.style.border = '1px solid black';
+        }
+        
+        if (span.length > 0){
+            return false;
+        }
+
+        inputName.style.border = '2px solid red';
+        const spanErrorName = document.createElement('span');
+        spanErrorName.textContent = 'Erro';
+        
+        spanErrorName.classList.add('error')
+        
+        formName.appendChild(spanErrorName);
+
+        return false;
+    }
+</script>
+</html>

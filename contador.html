@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+        <script defer src="app.js"></script>
+        <title>App contador</title>
+        <style>
+            body {
+        font-family: sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        min-height: 70vh;
+        }
+
+        div {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5em;
+        }
+
+                .btnMais {
+        background-color: seagreen;
+        padding: 0.25em 0.5em;
+        border-radius: 4px;
+        color: #f1f1f1;
+        border: none;
+        }
+        btnMais:hover {
+        transition: 0.15s;
+        transform: scale(1.05);
+        background-color: #3ab16e;
+        }
+        .btnMenos {
+        background-color: #aa0000;
+        padding: 0.25em 0.5em;
+        border-radius: 4px;
+        color: #f1f1f1;
+        border: none;
+        }
+        .btnMenos:hover {
+        transition: 0.15s;
+        transform: scale(1.05);
+        background-color: #ff0000;
+        }
+        .maiorQueZero {
+        color: seagreen;
+        }
+
+        .menorQueZero {
+        color: #aa0000;
+        }
+
+        </style>
+    </head>
+    <body>
+        <main>
+            <h1>App contador</h1>
+            <h2 id="contador">0</h2>
+    
+            <div>
+                <button class="btnMais" onclick="adicionarUm()">Adicionar +1</button>
+                <button class="btnMenos" onclick="subtrairUm()">Subtrair -1</button>
+            </div>
+        </main>
+    </body>
+
+    <script>
+        let count = 0;
+
+    const atualizarContador = () => {
+    const contadorElement = document.getElementById("contador");
+    contadorElement.classList.remove('menorQueZero', 'maiorQueZero');
+
+    if (count > 0) {
+        contadorElement.classList.add('maiorQueZero');
+    } else if (count < 0) {
+        contadorElement.classList.add('menorQueZero');
+    }
+
+    // Atualize o localStorage com o novo valor de count
+    localStorage.setItem('contadorValue', count);
+}
+
+    </script>
+
+</html>

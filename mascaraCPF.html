@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        table {
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+        }
+    </style>
+
+</head>
+<body>
+    <h1>Formulário</h1>
+
+    <form>
+        <input id="name" type="text" autocomplete="off" placeholder="Nome">
+        <input id="cpf" type="text" autocomplete="off" maxlength="14" placeholder="CPF" >
+        <button type="button" onclick="enviar()">Enviar</button>
+    </form>
+
+    <p id="result"></p>
+
+    <script>
+
+        const value = 
+
+        function onlyNumber(event){
+            const only = /\D/g;
+
+            if(only.test(event.key) && event.key !== 'Backspace'){
+                event.preventDefault();
+            }
+
+            if(event.target.value.length >= 14) {
+                event.preventDefault();
+            }
+        }
+
+
+        const input = document.getElementById('cpf')
+        input.addEventListener('keypress', () =>{
+            let inputLength = input.value.length
+
+            if(inputLength === 3 || inputLength === 7){
+                input.value += '.'
+            }else if (inputLength === 11){
+                input.value += '-'
+            }
+        })
+
+
+        function enviar(){
+            var nome = document.getElementById('name').value;
+            var cpf = document.getElementById('cpf').value;
+
+            var resultado = 'Nome: ' + nome + '<br>CPF: ' + cpf;
+         document.getElementById('result').innerHTML = resultado;
+        }
+    </script>
+</body>
+</html>
